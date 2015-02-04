@@ -11,7 +11,8 @@ var callFriend = function(){
 
   //code here
 
-
+var callJake = callFriend();
+callJake("435-215-9248");
 
 /*
 
@@ -20,3 +21,32 @@ Write a function that accepts a function as it's first argument and returns a ne
 Once completed, add a second arguments that allows the function to be executed N number of times. After the function has been called N number of times, console.log('STAHHP');
 
 */
+
+var x = function (callBack) {
+	counter = 0;
+	return function () {
+		counter++;
+		if (counter < 2) {
+			callBack();
+		}
+	}
+}
+
+var y = x(function() {alert("lalala")});
+y();
+
+
+var x = function (n, callBack) {
+	counter = 0;
+	return function () {
+		counter++;
+		if (counter < n) {
+			callBack();
+		}
+	}
+}
+
+var y = x(5, function() {alert("lalala")});
+y();
+
+// why does the counter have to be on the inside for it to work?

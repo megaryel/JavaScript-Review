@@ -1,16 +1,32 @@
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category. 
 
   //Your code here
+var favoriteThings = {
+  band: "The Who", 
+  food: "fresh", 
+  person: "depends", 
+  book: "Gilead", 
+  movie: "Sundance", 
+  holiday: "Thanksgiving",
+};
+
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
   //Your code here
+favoriteThings.car = "Honda";
+favoriteThings.brand = "Warby Parker";
 
 //Now change the food key in your favoriteThings object to be 'Lettuce' and change the book key in your favoriteThings object to be '50 Shades of Gray'. 
 
   //Your code here
+favoriteThings.food = "lettuce";
+favoriteThings.book = "50 Shades of Gray";
 
 //Now, alert your favorite person, then alert your favorite book.
+
+alert(favoriteThings.person);
+alert(favoriteThings.book);
 
   //Your code here
 
@@ -33,6 +49,14 @@ var user = {
 
   //Your code here
 
+for (var key in user) {
+    if (!user[key]) {
+      delete user[key];
+    }
+};
+
+// dot notation is taken literally
+
 //Once you get your truthy object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Your code here
@@ -51,15 +75,23 @@ var user = {
 
   //Your code here
 
+var methodCollection = {};
+
 //Now add two methods (functions that are properties on objects) to your methodCollection object. One called 'alertHello' which alerts 'hello' and another method called logHello which logs 'hello' to the console. 
 
   //Your code here
+methodCollection.alertHello = function () {
+  return alert("Hello");
+}
+methodCollection.logHello = function() {
+  return console.log("Hello");
+}
 
 //Now call your alertHello and logHello methods. 
 
   //Your code here
-
-
+methodCollection.alertHello();
+methodCollection.logHello();
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -68,5 +100,29 @@ var user = {
 //write a function called voweler that accepts a string, and returns an object with the keys being all the vowels in that string, and the values being how many times that particular vowel was in the string.
 //voweler("This is a test") --> {i: 2, a: 1, e: 1};
 
+var voweler = function(str) {
+  var letterArr = str.split("");
+  var vowels = {a: 0, e: 0, i: 0, o: 0, u: 0};
+  for (var i = 0; i < letterArr.length; i++) {
+    if (letterArr[i] === "a") {
+      vowels.a++;
+    }
+    if (letterArr[i] === "e") {
+      vowels.e++;
+    }
+    if (letterArr[i] === "i") {
+      vowels.i++;
+    }
+    if (letterArr[i] === "o") {
+      vowels.o++;
+    }
+    if (letterArr[i] === "u") {
+      vowels.u++;
+    }
+  }
+  console.log(vowels);
+}
+
+voweler("This is a test");
 
 

@@ -7,7 +7,9 @@ first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
 
-
+var first = function (array, callBack) {
+  callBack(array[0]);
+}
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -20,7 +22,9 @@ last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
 
-
+var last = function (array, callBack) {
+  callBack(array[array.length - 1]);
+}
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -37,6 +41,11 @@ contains('Colt', names, function(yes){
   }
 });
 
+var contains = function(name, array, callBack) {
+    if(array.indexOf(name) !== -1) {
+      callBack(true);
+    }
+}
 
 
 
@@ -51,6 +60,13 @@ map(numbers, function(num){
   return num * 2; //returns an array of [2,4,6,8,10]
 });
 
+var map = function(array, callBack) {
+    var newNum = [];
+    for(var i = 0; i < array.length; i++) {
+      newNum.push(callBack(array[i]));
+    }
+    return newNum;
+}
 
 
 
@@ -60,6 +76,19 @@ map(numbers, function(num){
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var uniq = function(array, callBack) {
+  var uniqueArr = [];
+  var obj = {};
+  for(var i = 0; i < array.length; i++) {
+    obj[array[i]] = 0;
+  }
+  for(var key in obj) {
+    uniqueArr.push(key);
+  }
+  callBack(uniqueArr);
+}
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -73,12 +102,16 @@ uniq(names, function(uniqArr){
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var each = function(array, callBack) {
+  for (var i = 0; i < array.length; i++) {
+    callBack(array[i], i);
+  }
+}
+
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + 'position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item)
 });
-
-
-
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -105,11 +138,18 @@ var users = [
     address: '192 East 32 North'
   },
 ];
+
+var getUserById = function(id, array, callBack) {
+  for (var i = 0; i < array.length; i++) {
+      if (array[i].id === id){
+        callBack(array[i]);
+      }
+  }
+}
+
 getUserById('16t', users, function(user){
   console.log('The user with the id 16t has the email of ' + user.email + 'the name of ' + user.name + ' and the address of ' + user.address); 
 });
-
-
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -119,6 +159,15 @@ getUserById('16t', users, function(user){
 
 //Looks through each value in the list, returning the first one that passes a truth test 
 var numbers  = [1, 2, 3, 4, 5, 6];
+
+var find = function(array, callBack) {
+  for (var i = 0; i < array.length; i++)
+    if (callBack(array[i]))
+      return console.log(array[i]);
+}
+
 find(numbers, function(num){ 
   return num % 2 == 0; //should return 2
 })
+
+
